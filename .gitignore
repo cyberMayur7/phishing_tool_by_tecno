@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# virtual env
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln
+
+# models / data (optional)
+*.pkl
+*.joblib
+
+# OS
+.DS_Store
+Thumbs.db
