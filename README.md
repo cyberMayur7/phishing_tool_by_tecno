@@ -1,4 +1,4 @@
-# phishing_tool_by_tecno
+
 # Simple Phishing Detector (URL + Email)
 
 A small demo command-line phishing detection tool (Python).  
