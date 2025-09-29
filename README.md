@@ -1,4 +1,8 @@
 
+
+https://github.com/user-attachments/assets/d24b36b7-0080-442b-a4ec-3bd1d93dee64
+
+
 # Simple Phishing Detector (URL + Email)
 
 A small demo command-line phishing detection tool (Python).  
