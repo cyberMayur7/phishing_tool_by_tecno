@@ -1,0 +1,11 @@
+# .gitignore (copy this)
+venv/
+__pycache__/
+*.pyc
+*.pkl
+*.csv
+.env
+.vscode/
+.idea/
+.DS_Store
+*.log
