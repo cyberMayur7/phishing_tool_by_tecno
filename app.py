@@ -1,18 +1,18 @@
-import streamlit as st
-import joblib
-from urllib.parse import urlparse
+# app.py
+from flask import Flask, request, jsonify
+from src.model import load_model, predict_pipeline
 
-model = joblib.load("url_model.pkl")
-vec = joblib.load("vectorizer.pkl")
+app = Flask(__name__)
+model = load_model("models/url_model.pkl")
 
-st.title("Phishing Detector Demo")
-url = st.text_input("Enter URL:")
-if st.button("Check URL"):
-    parsed = urlparse(url)
-    if not parsed.scheme:
-        url = "http://" + url
-    X = [url]
-    Xv = vec.transform(X)
-    pred = model.predict(Xv)[0]
-    prob = model.predict_proba(Xv).max()
-    st.success(f"Prediction: {pred} — Confidence: {prob:.2f}")
+@app.route("/analyze", methods=["POST"])
+def analyze():
+    d = request.get_json() or {}
+    url = d.get("url") or d.get("text")
+    if not url:
+        return jsonify({"error":"url/text missing"}), 400
+    label, conf = predict_pipeline(model, url)
+    return jsonify({"prediction": int(label), "confidence": conf})
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
